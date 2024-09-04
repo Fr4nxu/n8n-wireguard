@@ -18,11 +18,8 @@ Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas en
 ### Instalar Docker y Docker Compose usando estos comandos:
 
 ```bash
-# Instalar Docker
 sudo apt-get update
 sudo apt-get install -y docker.io docker-compose 
-```
-```bash
 # Añadir el usuario actual al grupo docker
 sudo usermod -aG docker ${USER}
 # Aplicar cambios sin reiniciar
@@ -30,11 +27,13 @@ su - ${USER}
 # Comprobar que el usuario se ha añadido correctamente al grupo DOCKER
 id -nG
 ```
+### Iniciar y habilitar Docker
 ```bash
-# Iniciar y habilitar Docker
 sudo systemctl start docker
 sudo systemctl enable docker
-# Levantar los servicios
+```
+### Levantar los servicios
+```bash
 docker-compose up -d
 # Verificar estado de los servicios
 docker-compose ps
