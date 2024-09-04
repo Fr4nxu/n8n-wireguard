@@ -15,6 +15,26 @@ Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas en
 - **[Docker](https://docs.docker.com/engine/install/)**: Plataforma para ejecutar contenedores.
 - **[Docker Compose](https://docs.docker.com/compose/install/)**: Herramienta para definir y ejecutar aplicaciones Docker con múltiples contenedores.
 
+## Configurar variables de entorno 
+modifica el .env.example adaptandolo a tus necesidades
+
+## Acceder a n8n
+http://localhost:5678
+
+## Conectar un cliente Wireguard VPN mediante Código QR
+Una vez que los servicios estén en ejecución, puedes visualizar el código QR generado por WireGuard para configurar un cliente VPN de la siguiente manera
+
+### Paso 1: Acceder al Directorio de Configuración de WireGuard
+Primero, navega al directorio donde se almacenan las configuraciones de los clientes de WireGuard:
+
+```bash
+cd wireguard/config/peer1
+xdg-open peer1.png
+
+
+### Paso 2: Escanea el código QR: Abre la aplicación de WireGuard en tu dispositivo móvil (iOS o Android) y utiliza la función de escanear QR para agregar la configuración.
+
+
 Puedes instalar Docker y Docker Compose usando estos comandos:
 
 ```bash
@@ -34,18 +54,12 @@ id -nG
 # Iniciar y habilitar Docker
 sudo systemctl start docker
 sudo systemctl enable docker
-```bash
 
-## Configurar variables de entorno modifica el .env.example adaptandolo a tus necesidades
 # Levantar los servicios
 docker-compose up -d
 # Verificar estado de los servicios
 docker-compose ps 
 
-# Acceder a n8n
-http://localhost:5678
-
-# Conectar un cliente VPN
 
 
 
