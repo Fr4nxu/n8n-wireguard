@@ -22,32 +22,30 @@ Puedes instalar Docker y Docker Compose usando estos comandos:
 sudo apt-get update
 sudo apt-get install -y docker.io docker-compose
 
-```bash
-#añadir el usuario actual al grupo docker
+# Añadir el usuario actual al grupo docker
 sudo usermod -aG docker ${USER}
-#aplicar cambios sin reiniciar
+
+# Aplicar cambios sin reiniciar
 su - ${USER}
-#comprobar que el usuario se ha añadido correctamente al grupo DOCKER
+
+# Comprobar que el usuario se ha añadido correctamente al grupo DOCKER
 id -nG
 
-```bash
 # Iniciar y habilitar Docker
 sudo systemctl start docker
 sudo systemctl enable docker
-
-### Configurar variables de entorno
-Modifica el .env.example adapatandolo a tus necesidades
-
 ```bash
+
+## Configurar variables de entorno modifica el .env.example adaptandolo a tus necesidades
 # Levantar los servicios
 docker-compose up -d
-#Verificar estado de los servicios
+# Verificar estado de los servicios
 docker-compose ps 
 
-### Acceder a n8n
+# Acceder a n8n
 http://localhost:5678
 
-### Conectar un cliente VPN
+# Conectar un cliente VPN
 
 
 
