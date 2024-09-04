@@ -1,12 +1,12 @@
 # n8n con WireGuard en Docker
 
-Este proyecto proporciona un entorno de automatización con [n8n](https://n8n.io/) junto con una VPN [WireGuard](https://www.wireguard.com/) utilizando Docker. n8n es una herramienta de automatización de flujos de trabajo y WireGuard es una solución VPN moderna y rápida.
+En un entorno de TI moderno, la capacidad de automatizar flujos de trabajo y gestionar procesos de manera eficiente es crucial. n8n, una herramienta de automatización de código abierto, se destaca como una solución flexible y potente que permite integrar diversas APIs y servicios en flujos de trabajo personalizados. Combinado con una VPN WireGuard, n8n se convierte en una herramienta accesible y segura desde cualquier ubicación, lo que maximiza su utilidad en entornos distribuidos o remotos.
 
 ## Características
 
-- **n8n**: Plataforma de automatización de flujos de trabajo de código abierto.
-- **WireGuard**: Solución de VPN rápida y segura.
-- **Docker Compose**: Orquesta la configuración y ejecución de los contenedores.
+- **n8n**: Plataforma de automatización de flujos de trabajo de código abierto que permite conectar diversas aplicaciones y servicios para automatizar tareas repetitivas.
+- **WireGuard**: WireGuard es una solución de VPN moderna, conocida por su simplicidad, velocidad y alto nivel de seguridad.
+- **Acceso Remoto Seguro**: Permite acceder a tu instancia de n8n desde cualquier lugar del mundo de manera segura, protegiendo tus datos y flujos de trabajo
 
 ## Requisitos
 
@@ -20,14 +20,34 @@ Puedes instalar Docker y Docker Compose usando estos comandos:
 ```bash
 # Instalar Docker
 sudo apt-get update
-sudo apt-get install -y docker.io
+sudo apt-get install -y docker.io docker-compose
 
+```bash
+#añadir el usuario actual al grupo docker
+sudo usermod -aG docker ${USER}
+#aplicar cambios sin reiniciar
+su - ${USER}
+#comprobar que el usuario se ha añadido correctamente al grupo DOCKER
+id -nG
+
+```bash
 # Iniciar y habilitar Docker
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Instalar Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d '\"' -f 4)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+### Configurar variables de entorno
+Modifica el .env.example adapatandolo a tus necesidades
 
-# Dar permisos de ejecución a Docker Compose
-sudo chmod +x /usr/local/bin/docker-compose
+```bash
+# Levantar los servicios
+docker-compose up -d
+#Verificar estado de los servicios
+docker-compose ps 
+
+### Acceder a n8n
+http://localhost:5678
+
+### Conectar un cliente VPN
+
+
+

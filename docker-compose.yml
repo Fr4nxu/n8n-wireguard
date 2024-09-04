@@ -55,7 +55,7 @@ services:
       - TZ=Europe/Madrid
       - SERVERURL=auto
       - SERVERPORT=51820
-      - PEERS=1
+      - PEERS=${PEERS}
       - PEERDNS=auto
       - INTERNAL_SUBNET=10.13.18.0
     volumes:
